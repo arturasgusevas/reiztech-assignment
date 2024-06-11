@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import fetchCountries from '../services/countriesService';
 import CountryItem from './CountryItem';
+import '../styles.css';
 
 interface Country {
   name: string;
@@ -53,9 +54,9 @@ const CountriesList: React.FC = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <div className='container'>
       <h1>Countries</h1>
-      <div>
+      <div className='controls'>
         <label>
           <input
             type='checkbox'
@@ -76,7 +77,7 @@ const CountriesList: React.FC = () => {
           Sort by name ({sortOrder === 'asc' ? 'Ascending' : 'Descending'})
         </button>
       </div>
-      <ul>
+      <div>
         {filteredCountries.map((country) => (
           <CountryItem
             key={country.name}
@@ -85,7 +86,7 @@ const CountriesList: React.FC = () => {
             area={country.area}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
